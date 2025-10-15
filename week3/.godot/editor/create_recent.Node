@@ -1,0 +1,13 @@
+AudioStreamPlayer2D
+Label
+RichTextLabel
+CollisionShape2D
+Area2D
+Sprite2D
+StaticBody2D
+CanvasLayer
+Button
+VBoxContainer
+CenterContainer
+ColorRect
+TextureRect

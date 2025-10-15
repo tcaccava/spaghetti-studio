@@ -1,0 +1,14 @@
+res://scenes/node_2d.tscn
+res://scripts/signals.gd
+res://scenes/hud.tscn
+res://scenes/start.tscn
+res://scenes/game_over.tscn
+res://scenes/pause.tscn
+res://scenes/gas_station.tscn
+res://scenes/passenger.tscn
+res://scenes/destination.tscn
+res://scripts/game_over.gd
+res://scripts/timer.gd
+res://scripts/passenger.gd
+res://scripts/taxi.gd
+res://scripts/destination.gd
