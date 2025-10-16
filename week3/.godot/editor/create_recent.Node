@@ -1,4 +1,6 @@
 AudioStreamPlayer2D
+AudioListener2D
+Camera2D
 Label
 RichTextLabel
 CollisionShape2D
@@ -10,4 +12,3 @@ Button
 VBoxContainer
 CenterContainer
 ColorRect
-TextureRect

@@ -7,6 +7,11 @@ extends Node2D
 @onready var out_of_time = $OutOfTime
 @onready var delivered_sound = $Delivered
 @onready var vroom_sound = $VROOM
+@onready var refueling_sound = $Refueling
+@onready var gas_station = $GasStation
+@onready var pickup_sound = $Pickup
+@onready var new_call = $NewPassenger
+
 var passenger_scene = preload("res://scenes/passenger.tscn")
 var destination_scene = preload("res://scenes/destination.tscn")
 var current_passenger = null
@@ -16,14 +21,14 @@ var low_fuel_alerted = false
 var elapsed_time = 0.0
 var is_game_over = false
 var low_time_alerted = false
-var vroom_flag = false
+
 
 func _ready():
 	taxi.fuel_changed.connect(hud.update_fuel)
 	taxi.game_over.connect(_on_game_over)
 	taxi.distance_changed.connect(hud.update_distance)
 	taxi.vroom.connect(_on_vroom)
-	
+	gas_station.refueling.connect(_on_refuel)
 	spawn_passenger()
 
 func _input(event):
@@ -59,12 +64,14 @@ func spawn_passenger():
 	current_passenger.pickup_failed.connect(_on_pickup_failed)
 	current_passenger.time_passing.connect(_on_little_time)
 	add_child(current_passenger)
+	new_call.play()
 # -------------------------------
 func _on_passenger_picked_up(passenger):
 	low_time_alerted = false
 	current_destination_marker = destination_scene.instantiate()
 	current_destination_marker.position = passenger.destination
 	call_deferred("add_child", current_destination_marker)
+	pickup_sound.play()
 	await get_tree().process_frame
 	current_destination_marker.reached.connect(_on_destination_reached)
 
@@ -123,17 +130,19 @@ func _on_little_time(_passenger):
 		low_time_alerted = true
 		
 func _on_vroom():
-	if not vroom_flag:
+	if not vroom_sound.playing:
 		vroom_sound.play()
-		vroom_flag = true
+		
+
+func _on_refuel():
+	if not refueling_sound.playing:
+		refueling_sound.play()
 
 func _process(delta):
 	if taxi.current_fuel / taxi.max_fuel > 0.3:
 		low_fuel_alerted = false
 	if taxi.current_fuel / taxi.max_fuel <= 0.3:
 		_on_low_fuel()
-	if not (Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")):
-		vroom_flag = false
 	if not get_tree().paused and not is_game_over:
 		elapsed_time += delta
 		

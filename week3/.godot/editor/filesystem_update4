@@ -12,3 +12,4 @@ res://scripts/timer.gd
 res://scripts/passenger.gd
 res://scripts/taxi.gd
 res://scripts/destination.gd
+res://scripts/gas_station.gd

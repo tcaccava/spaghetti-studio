@@ -2,7 +2,7 @@
 
 ### Passenger Management System
 - ☑️ **Random passenger spawn**: Passengers appear at random positions on the map
-- ☑️ **Random sprite selection**: Each passenger has a randomly selected sprite from 4 available characters
+- ☑️ **Random sprite selection**: Each passenger has a randomly selected sprite from 4 available spaghetti guys
 - ☑️ **Random destinations**: Each passenger has a unique random destination point
 - ☑️ **Blinking pickup indicator**: Arrow icon blinks above waiting passengers
 - ☑️ **Scoring system**: +10 points for each successful delivery
@@ -20,13 +20,14 @@
 
 ### Strategic Gameplay Balance
 - ☑️ **Fuel vs delivery balance**: Core gameplay revolves around balancing deliveries with refueling needs
-- ☑️ **Strategic decision making**: Players must evaluate whether to skip distant passengers based on fuel level. DON'T FORGET THE REFUEL.
+- ☑️ **Strategic decision making**: Players must evaluate whether to skip distant passengers based on fuel level. DON'T FORGET TO REFUEL.
 - ☑️ **Time maximization objective**: Goal is to survive as long as possible by managing fuel and deliveries. The game is designed to be difficult, but with a little strategy, you can do it.
 
 ### Audio Feedback
-- ☑️ **Low fuel warning sound**: Audio alert plays when fuel drops below 30%
+- ☑️ **Low fuel warning sound**: Double audio alert plays when fuel drops below 30%
 - ☑️ **Low time warning sound**: Audio alert plays when there are less than 1.3 seconds left until the end of the pickup and delivery time.
 - ☑️ **Delivery completion sound**: Audio alert plays when the png is delivered to the destination
+- ☑️ **VROOM sound when taxi moves**: Sound plays when arrow keys are pressed
 
 ### Persistent Score System
 - ☑️ **Global timer variable**: Elapsed time tracked as main score (higher is better)

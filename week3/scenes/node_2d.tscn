@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bs1fh1jege0jq"]
+[gd_scene load_steps=39 format=4 uid="uid://bs1fh1jege0jq"]
 
 [ext_resource type="Script" uid="uid://cb0qy6r5o484d" path="res://scripts/signals.gd" id="1_hh0fu"]
 [ext_resource type="Texture2D" uid="uid://dgb0a1y246we8" path="res://assets/CP_V1.0.4.png" id="1_j7wrs"]
@@ -15,6 +15,9 @@
 [ext_resource type="AudioStream" uid="uid://c2pr48vxm6owt" path="res://assets/tic-toc-88484.mp3" id="14_ifa78"]
 [ext_resource type="AudioStream" uid="uid://chatdtmpwchae" path="res://assets/coin-recieved-230517.mp3" id="14_xtx0q"]
 [ext_resource type="AudioStream" uid="uid://cnlj23qschuh4" path="res://assets/Vroom.mp3" id="15_xtx0q"]
+[ext_resource type="AudioStream" uid="uid://bihmbv5h47tm8" path="res://assets/glug-glug-glug-39140.mp3" id="16_3kg8w"]
+[ext_resource type="AudioStream" uid="uid://ck64nskos1gdb" path="res://assets/car-door-sfx-399253.mp3" id="17_x63s8"]
+[ext_resource type="AudioStream" uid="uid://bfphf6ak5053m" path="res://assets/phone-vibrating-372478.mp3" id="18_0q20i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e48y"]
 texture = ExtResource("1_j7wrs")
@@ -2734,12 +2737,6 @@ animation = &"right"
 position = Vector2(193, 585)
 shape = SubResource("RectangleShape2D_4d7sh")
 
-[node name="Camera2D" type="Camera2D" parent="Taxi"]
-limit_left = -79
-limit_top = -50
-limit_right = 2561
-limit_bottom = 1441
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Taxi"]
 position = Vector2(177, 594)
 emitting = false
@@ -2775,6 +2772,7 @@ position = Vector2(-98.5, 431.5)
 shape = SubResource("RectangleShape2D_3m5ht")
 
 [node name="Pause" parent="." instance=ExtResource("9_3m5ht")]
+visible = false
 
 [node name="Hud" parent="." instance=ExtResource("8_3m5ht")]
 
@@ -2789,14 +2787,28 @@ script = SubResource("GDScript_hsdmi")
 
 [node name="OutOfTime" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_ifa78")
-volume_db = 2.667
+volume_db = 3.0
 
 [node name="Delivered" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_xtx0q")
 
 [node name="VROOM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_xtx0q")
-volume_db = -4.0
+volume_db = -8.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(394, 409)
+
+[node name="Refueling" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_3kg8w")
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_x63s8")
+volume_db = 2.0
+
+[node name="NewPassenger" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_0q20i")
+volume_db = 9.333
 
 [connection signal="body_entered" from="Obstacles/Cono1" to="Taxi" method="_on_cono_1_body_entered"]
 [connection signal="body_exited" from="Obstacles/Cono1" to="Taxi" method="_on_cono_1_body_exited"]

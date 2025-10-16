@@ -1,9 +1,10 @@
 extends StaticBody2D
 
-@export var refuel_rate = 8
+@export var refuel_rate = 7
 
 var taxi_in_range = false
 var taxi_node = null
+signal refueling
 
 func _ready():
 	$Area2D.body_entered.connect(_on_body_entered)
@@ -23,6 +24,7 @@ func _on_body_exited(body):
 func _process(delta):
 	if taxi_in_range and taxi_node != null:
 		if Input.is_action_pressed("ui_accept"):  # SPAZIO
+			refueling.emit()
 			refuel(delta)
 
 func refuel(delta):

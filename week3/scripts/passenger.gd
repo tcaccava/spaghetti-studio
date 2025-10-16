@@ -10,7 +10,7 @@ var blink_time = 0.5
 var blink_timer = 0.0
 var pickup_timer = 0.0
 var deliver_timer = 0.0
-var tic_toc = 3.7
+var tic_toc = 3.8
 var time_alert_emitted = false
 
 var png = [
